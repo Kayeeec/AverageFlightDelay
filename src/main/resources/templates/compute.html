@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Average Flight Delay - result</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+        <link type="text/css" rel="stylesheet" href="main.css" th:href="@{/main.css}" />
+    </head>
+    <body>
+        <div class="col-xs-12 to-center text-center">
+            <h2 class="computing-header">Downloading file and computing average delay.
+                <small>This might take a while...</small>
+            </h2>
+            <img th:attr="src=@{/hourglass_loader.gif}" class="loading-gif">
+            <script th:inline="javascript">
+                var year = /*[[${year}]]*/ 'default';
+                var airportIATA = /*[[${airportIATA}]]*/ 'default';
+                //window.location.href = '/result';
+                window.location.href = '/result/'+year+'/'+airportIATA;
+            </script>
+        </div>
+        
+    </body>
+        
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Average Flight Delay</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+        <link type="text/css" rel="stylesheet" href="main.css" th:href="@{/main.css}" />
+    </head>
+    <body>
+        <div class="col-xs-4 to-center">
+            <h1>Average Flight Delay</h1>
+            <form action="#" th:action="@{/compute}" th:object="${toCompute}" method="post">
+                <div class="form-group">
+                    <label for="dest">Airport IATA Code:</label> 
+                    <input id="dest" type="text" th:field="*{airportIATA}" class="form-control" required 
+                           pattern="\S+" title="Must be a non-empty string."/>
+                    <p>Search for IATA codes in <a href="https://www.world-airport-codes.com/" target="_blank"> here</a>.</p>
+                </div>
+                <div class="form-group">
+                    <label for="year">Select year:</label>
+                    <select id="year" class="form-control" th:field="*{year}">
+                            <option th:each="y : ${years}"
+                                    th:value="${y}"
+                                    th:utext="${y}"/>
+                    </select>
+                </div>
+                <p><input type="submit" value="Submit" class="btn btn-success"/> <input type="reset" value="Reset" class="btn btn-default"/></p>
+            </form>
+        </div>
+    </body>
+</html>
